@@ -1,6 +1,7 @@
 ---
 name: "named-persona-adversarial-review"
 description: "Code review with real engineers' philosophies, not abstract roles. Catches what automated bots and generic reviewers miss."
+version: 2.2.0
 ---
 
 # Named-Persona Adversarial Review
