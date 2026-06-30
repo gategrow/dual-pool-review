@@ -99,7 +99,7 @@ Tested 2026-06-27 on PR #866 (alirezarezvani/claude-skills, 18.7K stars):
 
 ## Related
 
-- [checkgrow](https://github.com/YuhaoLin2005/checkgrow) — Full AI quality toolkit
+- [checkgrow](https://github.com/gategrow/checkgrow) — Full AI quality toolkit
 - PR [#866](https://github.com/alirezarezvani/claude-skills/pull/866) — skill implementation
 - PR [#2365](https://github.com/affaan-m/ECC/pull/2365) — delivery-gate
 
