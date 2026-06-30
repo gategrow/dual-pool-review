@@ -1,56 +1,59 @@
-# 人物审查双池系统 v2.2
+# Dual-Pool Persona Review System v2.2 · 人物审查双池系统
 
-## 双池的两种思维模式
+> **TL;DR:** Two pools, two thinking modes. Fixed pool = convergence (known experts, deep). Random pool = divergence (fresh discovery, blind-spot breaking). Cross-orchestrated for adversarial review quality.
 
-| | 固定池 | 随机池 |
-|---|--------|--------|
-| 思维模式 | **收敛** -- 已知最优，深度挖掘 | **发散** -- 未知可能，突破盲区 |
-| 优势 | 稳定可靠，越审越深 | 惊喜洞察，打破回声室 |
-| 风险 | 回声室效应，趋于平庸 | 质量波动，可能离题 |
+## Two Thinking Modes · 双池的两种思维模式
 
-## 流程（每轮）
+| Pool 池 | Mode 思维模式 | Strengths 优势 | Risk 风险 |
+|---------|-------------|---------------|----------|
+| **Fixed 固定池** | **Convergence 收敛** — known best, deep mining | Stable, reliable, gets deeper each round | Echo chamber, plateauing |
+| **Random 随机池** | **Divergence 发散** — unknown possibilities, break blind spots | Surprise insights, breaks echo chamber | Quality variance, may go off-topic |
 
-1. 判断任务类型 -> 选池/编排模式
-2. 管理员池随机抽1人（排除上轮管理员）
-3. 管理员分析任务 -> 确定深度 + 岗位 + 招募工人
-4. 团队审查（每人>=1问题）
-5. 输出：[Manager]因[reason]选[A,B,C]。发现N个问题。裁定
+## Round Flow · 流程（每轮）
 
-## 编排模式
+1. Classify task type → select pool/orchestration mode
+2. Manager pool randomly draws 1 (exclude last round's manager)
+3. Manager analyzes task → determines depth + roles + recruits workers
+4. Team review (≥1 finding per person)
+5. Output: [Manager] chose [A,B,C] because [reason]. Found N issues. Verdict.
 
-| 模式 | 适用 | 编排 |
-|------|------|------|
-| exploit-only | 重复型任务 | 全程固定池 |
-| explore-only | 灵感型任务 | 全程随机池 |
-| explore->exploit | 策略决策 | R1随机 -> R2+固定 |
-| exploit->explore | 作品集审查 | R1固定 -> R2+随机 |
+## Orchestration Modes · 编排模式
 
-## 固定池
+| Mode | When 适用 | Orchestration 编排 |
+|------|----------|------|
+| **exploit-only** | Repetitive tasks | All rounds: fixed pool |
+| **explore-only** | Creative/inspiration tasks | All rounds: random pool |
+| **explore→exploit** | Strategic decisions | R1: random → R2+: fixed |
+| **exploit→explore** | Portfolio/capstone review | R1: fixed → R2+: random |
 
-### 管理员
-| 管理员 | 身份 | 擅长场景 |
-|--------|------|---------|
-| Patty McCord | Netflix前CTO | 具体产出任务 |
-| Ed Catmull | Pixar联合创始人 | 创意/策略任务 |
+## Fixed Pool · 固定池
 
-### 工人
-| 工人 | 核心框架 | 匹配点 |
-|------|---------|--------|
-| Rich Hickey | Simple vs Easy | 混乱->秩序 |
-| John Carmack | 第一性原理 | 游戏x工程 |
-| Don Norman | HCI/affordance | HCI目标 |
-| Jesse Schell | 100+透镜 | 126款游戏 |
-| Simon Wardley | 先地图再决策 | 先全景再细节 |
-| Stephen Few | 功能密度>装饰 | 大量打印 |
-| Keith Tam | 中文排版标准 | 中文印刷 |
-| Dan Abramov | 心智模型优先 | 借模板->内化 |
-| Kathy Sierra | 降低认知负荷 | 学习材料 |
+### Managers · 管理员
 
-## 池子进化
+| Manager | Background | Best For |
+|--------|-----------|---------|
+| Patty McCord | Netflix former CTO | Concrete deliverable tasks |
+| Ed Catmull | Pixar co-founder | Creative/strategy tasks |
 
-- 晋升: 随机池连续2次被选中+高质量 -> 固定池
-- 淘汰: 固定池连续5轮零发现 -> 移除
-- 审计: 每10次deep任务审查固定池健康度
+### Workers · 工人
+
+| Worker | Core Framework | Best Match |
+|--------|---------------|------------|
+| Rich Hickey | Simple vs Easy | Chaos → order |
+| John Carmack | First principles | Games × engineering |
+| Don Norman | HCI / affordance | HCI goals |
+| Jesse Schell | 100+ lenses | 126-game perspective |
+| Simon Wardley | Map first, then decide | Full picture before details |
+| Stephen Few | Functional density > decoration | Heavy data visualization |
+| Keith Tam | Chinese typography standards | Chinese print/documents |
+| Dan Abramov | Mental model first | Adopt templates → internalize |
+| Kathy Sierra | Reduce cognitive load | Learning materials |
+
+## Pool Evolution · 池子进化
+
+- **Promotion 晋升:** Random pool worker selected 2 consecutive times + high quality → fixed pool
+- **Demotion 淘汰:** Fixed pool worker 5 consecutive rounds with zero findings → removed
+- **Audit 审计:** Every 10 deep tasks, review fixed pool health
 
 ## License
 MIT
