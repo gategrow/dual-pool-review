@@ -109,7 +109,7 @@ All 16 issues were fixed. **The system reviewing itself and finding structural f
 3. The manager handles pool selection, recruitment, and cross-round continuity
 4. Output is a structured report with cited findings, concurrences, and verdict
 
-The methodology is MIT-licensed and available at [github.com/YuhaoLin2005/dual-pool-review](https://github.com/YuhaoLin2005/dual-pool-review).
+The methodology is MIT-licensed and available at [github.com/gategrow/dual-pool-review](https://github.com/gategrow/dual-pool-review).
 
 ## References
 
