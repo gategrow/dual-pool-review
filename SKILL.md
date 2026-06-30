@@ -42,6 +42,8 @@ Generic adversarial review produces generic findings. This grounds each persona 
 
 ## Persona Pools
 
+> **Note:** The personas below form the **v1.0 "starter kit"** — simple, pick-by-role, always-ready. For the **v2.2 advanced dual-pool architecture** (fixed pool + random pool, manager curation, diversity enforcement, pool evolution), see [`persona-pool.md`](persona-pool.md). The two persona sets are intentionally different — SKILL.md is the quick-start entry point, persona-pool.md is the full production system. Use SKILL.md's table when you want 3 named engineers fast; use persona-pool.md when you want a curated review with convergence + divergence.
+
 **Product** (pick 1 per round -- mandatory):
 | Persona | Known For | Best For |
 |---------|-----------|----------|
@@ -100,4 +102,5 @@ Merge duplicates. Cross-persona -> severity upgrade. Post as PR comment or save 
 ## Cross-References
 
 - **Extends:** `adversarial-reviewer` (alirezarezvani/claude-skills)
-- **Advanced:** For curated persona pools with manager curation, see `persona-pool.md` and `dual-pool-review` methodology.
+- **v1.0 Quick-Start:** The persona tables on this page (Thompson, Torvalds, Carmack, Brockman, Beck; Jobs, Cagan, Intercom PM). Pick 3, run, done.
+- **v2.2 Advanced:** [`persona-pool.md`](persona-pool.md) — completely different persona set (Hickey, Carmack, Norman, Schell, Wardley, Few, Tam, Abramov, Sierra; McCord, Catmull) with dual-pool architecture, manager curation, diversity enforcement, and pool evolution rules. See also [`dual-pool-review` methodology](https://github.com/gategrow/dual-pool-review).
