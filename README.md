@@ -147,6 +147,16 @@ This methodology was shaped by direct feedback from reviewers and maintainers ac
 
 Any errors or shortcomings in this methodology are the author's, not the reviewers'.
 
+## Part of [gategrow](https://github.com/gategrow)
+
+| Repo | What |
+|------|------|
+| **[checkgrow](https://github.com/gategrow/checkgrow)** | Unified quality framework — start here |
+| **[delivery-gate](https://github.com/gategrow/delivery-gate)** | Stop hook for Claude Code |
+| **[self-audit](https://github.com/gategrow/self-audit)** | `pip install`-able four-dimension audit |
+| **[session-cost](https://github.com/gategrow/session-cost)** | L0→L3 layered cost tracking |
+| **[dual-pool-review](https://github.com/gategrow/dual-pool-review)** | Named-persona adversarial review methodology |
+
 ## License
 
 MIT
