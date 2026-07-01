@@ -135,6 +135,18 @@ Anti-fabrication discipline (confidence levels, drop-persona rule) hardened 2026
 - PR [#867](https://github.com/alirezarezvani/claude-skills/pull/867) — anti-fabrication hardening (confidence levels, principle grounding)
 - PR [#2365](https://github.com/affaan-m/ECC/pull/2365) — delivery-gate
 
+## Acknowledgments
+
+This methodology was shaped by direct feedback from reviewers and maintainers across three open-source communities. Each person's contribution is described as specifically as the public record allows — no endorsement beyond what they actually wrote is implied.
+
+**[xg-gh-25](https://github.com/xg-gh-25)** (SwarmAI) reviewed the [self-audit skill PR](https://github.com/anthropics/skills/pull/1367#issuecomment-4848923779) (anthropics/skills, 2026-06-29). Their detailed review suggested a Step 0 mechanical artifact check and requirement traceability in the Completeness dimension, referencing their T-CBB pattern from SwarmAI. Both became core features of the self-audit methodology.
+
+**[alirezarezvani](https://github.com/alirezarezvani)** (maintainer, alirezarezvani/claude-skills) reviewed and merged the [named-persona skill](https://github.com/alirezarezvani/claude-skills/pull/867) (2026-07-01). Beyond repo integration, his review directly added the anti-fabrication discipline that is now foundational to this methodology: cite principles with confidence levels (not fabricated verbatim quotes), drop a persona rather than invent, and ground every persona in verifiable sources via `persona-principles.md`.
+
+**[daltino](https://github.com/daltino)** (maintainer, affaan-m/ECC) reviewed and approved the [delivery-gate PR](https://github.com/affaan-m/ECC/pull/2365#pullrequestreview-3387330411) (2026-06-26), validating that a reasoning-quality gate (distinct from code-quality verification) is a legitimate complement to existing CI pipelines.
+
+Any errors or shortcomings in this methodology are the author's, not the reviewers'.
+
 ## License
 
 MIT
