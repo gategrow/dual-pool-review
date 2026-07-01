@@ -22,10 +22,10 @@ The dual-pool system organizes reviewers into two pools that are cross-orchestra
 
 1. Manager analyzes task → decides depth and required roles
 2. Manager recruits 2 engineers + 1 product/designer
-3. Each worker web-searches their own principles FIRST, extracts 3-5 verbatim quotes
-4. Workers review through ONLY pre-extracted quotes — no retrofitting
+3. Each worker grounds their principles FIRST (from [`persona-principles.md`](persona-principles.md) or web search), extracting documented stances with sources
+4. Workers review through ONLY pre-grounded principles — no retrofitting
 5. Cross-persona deduplication with severity promotion
-6. Output: structured report with cited findings, concurrences, and verdict
+6. Output: structured report with confidence-tagged findings, concurrences, and verdict
 
 ### Triage
 
@@ -37,18 +37,20 @@ The dual-pool system organizes reviewers into two pools that are cross-orchestra
 
 ## Core Rules
 
-### Quote-First Review
+### Principle-First Review (v1.1)
 
-The critical innovation: quotes are extracted BEFORE reviewing, not searched to support pre-formed opinions. This prevents confirmation bias — the tendency to find quotes that support an opinion you already formed.
+The critical innovation: principles are grounded BEFORE reviewing, not searched to support pre-formed opinions. This prevents confirmation bias — the tendency to find principles that support an opinion you already formed.
 
-Each worker searches `"[Name] [topic] principles"`, extracts 3-5 verbatim quotes, then reviews the code through ONLY those quotes. Findings that don't map to a pre-extracted quote are rejected.
+Each worker starts from [`persona-principles.md`](persona-principles.md) (or searches `"[Name] [topic] principles"`), extracts 3-5 documented stances with sources, then reviews the code through ONLY those principles. Findings that don't map to a pre-grounded principle are rejected.
+
+> **Anti-fabrication discipline (v1.1):** Cite the principle, not an invented verbatim quote. Every attribution carries a confidence level — `high` (sourced, listed in persona-principles.md), `moderate` (widely attributed, source not pinned, paraphrase only), `low` (inferred, usable as an attention-directing lens only). If you cannot anchor a persona's principle to a real source, drop that persona rather than fabricate.
 
 ### Symmetric Burden
 
 Both findings and non-findings carry equal verification cost:
 
-- **Finding:** Must cite 1+ specific, searchable quote from the named person
-- **Zero findings:** Must cite 3+ quotes the code successfully satisfies, with explanation of HOW
+- **Finding:** Must cite 1+ specific, sourced principle from the named person, with confidence level
+- **Zero findings:** Must cite 3+ principles the code successfully satisfies, with explanation of HOW
 
 This prevents both fake findings (expensive to fabricate) and lazy "everything looks fine" (also expensive). The symmetry forces genuine engagement regardless of outcome.
 
@@ -65,7 +67,7 @@ This prevents both fake findings (expensive to fabricate) and lazy "everything l
 
 ### Integrity Check
 
-After each round: "Would this person actually say this, or am I projecting?" If a finding can't be traced to a specific, verbatim quote from that person's documented principles, it's likely invented.
+After each round: "Is this principle actually sourced, or did I fabricate it?" Every finding must carry a confidence level. If a finding can't be traced to a specific, documented principle from that person's verifiable record, it's likely invented.
 
 ## Validation: The System Reviews Itself
 
@@ -76,21 +78,24 @@ After community feedback identified a flaw (mandatory findings forcing invented 
 | Severity | Count | Examples |
 |----------|-------|---------|
 | Critical | 1 | Skill referenced non-existent parent file — structurally broken |
-| High | 6 | "Credible-only findings" was a loophole; quote gate incentivized retrofitting; contradictory rules; "Intercom PM" not a named person |
+| High | 6 | "Credible-only findings" was a loophole; principle gate incentivized retrofitting; contradictory rules; "Intercom PM" not a named person |
 | Medium | 5 | Persona count inconsistency, static summaries undermining real-time search, product pool exhaustion |
 | Low | 4 | Search query variance, Step 0 entrenching mental model |
 
 All 16 issues were fixed. **The system reviewing itself and finding structural flaws in its own design is the strongest validation possible.**
 
+A subsequent hardening pass (v1.1, 2026-07-01) added the anti-fabrication discipline — confidence levels, principle grounding, and the rule to drop a persona rather than fabricate — informed by alirezarezvani/claude-skills PR #867.
+
 ## Comparison with Existing Approaches
 
 | | Standard Code Review | Abstract-Role Adversarial | This System |
 |---|---|---|---|
-| Reviewer identity | Generic "reviewer" | Abstract role (Saboteur, etc.) | Named engineer with cited principles |
-| Specificity | Depends on reviewer | Low — generic advice | High — specific, quotable, attributable |
+| Reviewer identity | Generic "reviewer" | Abstract role (Saboteur, etc.) | Named engineer with sourced principles |
+| Specificity | Depends on reviewer | Low — generic advice | High — specific, attributable, confidence-tagged |
 | Blind spot coverage | Single perspective | Multiple abstract perspectives | Fixed + random pools with cross-orchestration |
 | Evolution | None | None | Personas promoted/demoted/audited per session |
 | Self-validation | None | None | System reviews itself |
+| Anti-fabrication | N/A | N/A | Confidence levels + drop-persona rule |
 
 ## Risk Analysis
 
@@ -100,14 +105,16 @@ All 16 issues were fixed. **The system reviewing itself and finding structural f
 
 **False negatives:** Even with symmetric burden, a reviewer might still miss issues. Mitigation: cross-persona concurrence promotion and random pool diversity.
 
-**False positives:** The quote-first rule and integrity check eliminate most fake findings. Remaining risk: a real quote applied to the wrong context. Mitigation: independent concurrence requirement for severity promotion.
+**False positives:** The principle-first rule, confidence levels, and integrity check eliminate most fake findings. Remaining risk: a real principle applied to the wrong context. Mitigation: independent concurrence requirement for severity promotion.
+
+**LLM hallucination of attributed quotes:** The anti-fabrication discipline (confidence levels, paraphrase-not-quote, drop-persona rule) directly addresses this. See [`persona-principles.md`](persona-principles.md) for the pre-sourced grounding of every persona.
 
 ## Reproducibility
 
 1. Install the skill: `skills/named-persona-adversarial-review/SKILL.md`
 2. Invoke: `/adversarial-review --personas named --rounds N`
 3. The manager handles pool selection, recruitment, and cross-round continuity
-4. Output is a structured report with cited findings, concurrences, and verdict
+4. Output is a structured report with confidence-tagged findings, concurrences, and verdict
 
 The methodology is MIT-licensed and available at [github.com/gategrow/dual-pool-review](https://github.com/gategrow/dual-pool-review).
 
@@ -117,5 +124,6 @@ The methodology is MIT-licensed and available at [github.com/gategrow/dual-pool-
 - Kahneman, "Thinking Fast and Slow" — System 2 forcing through structured review
 - McCord, "How Netflix Reinvented HR" — manager-as-recruiter model
 - Catmull, "Creativity, Inc." — Braintrust model for creative review
-- Torvalds, various LKML posts — "good taste" as elimination of special cases
+- Torvalds, TED 2016 — "good taste" as elimination of special cases
 - Feynman, "Cargo Cult Science" — "you are the easiest person to fool"
+- alirezarezvani/claude-skills PR #867 — anti-fabrication hardening (2026-07-01)
